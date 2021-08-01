@@ -29,7 +29,8 @@ BLUE = 0x006798
 LIGHT_BLUE = 0x0099E1
 GREEN = 0x07DA63
 
-KILL_ACTION_TO_COLOR = {
+KILL_
+_TO_COLOR = {
     "KILL": GREEN,
     "TEAM KILL": LIGHT_RED,
 }
@@ -147,10 +148,11 @@ class DiscordWebhookHandler:
             action = log["action"]
             action = action.split("CHAT")[1]
             color = CHAT_ACTION_TO_COLOR[action]
+            server_name = os.getenv('SERVER_SHORT_NAME', os.getenv('SERVER_SHORT_NAME', 'Undefined'))
 
             embed = discord.Embed(description=message, color=color)
             embed.set_author(
-                name=f"{player} {action}", url=STEAM_PROFILE_URL.format(id64=steam_id)
+                name=f"{player} [{server_name}] {action}", url=STEAM_PROFILE_URL.format(id64=steam_id)
             )
 
             content = ""
